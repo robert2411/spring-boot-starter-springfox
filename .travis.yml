@@ -12,3 +12,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: robert2411/spring-boot-starter-springfox
+  name: $project_version
