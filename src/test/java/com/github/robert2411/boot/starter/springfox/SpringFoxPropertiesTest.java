@@ -24,16 +24,40 @@ public class SpringFoxPropertiesTest {
         Assert.assertEquals("description", springFoxProperties.getInfo().getDescription());
     }
 
+    @Test
+    public void getInfoVersion() {
+        Assert.assertEquals("version", springFoxProperties.getInfo().getVersion());
+    }
+
+    @Test
+    public void getInfoTermsOfServiceUrl() {
+        Assert.assertEquals("termsOfServiceUrl", springFoxProperties.getInfo().getTermsOfServiceUrl());
+    }
+
+    @Test
+    public void getInfoContactName() {
+        Assert.assertEquals("name", springFoxProperties.getInfo().getContact().getName());
+    }
+
+    @Test
+    public void getInfoContactEmail() {
+        Assert.assertEquals("email", springFoxProperties.getInfo().getContact().getEmail());
+    }
+
+    @Test
+    public void getInfoContactUrl() {
+        Assert.assertEquals("url", springFoxProperties.getInfo().getContact().getUrl());
+    }
+
+    @Test
+    public void getInfoLicenseName() {
+        Assert.assertEquals("name", springFoxProperties.getInfo().getLicense().getName());
+    }
+
+    @Test
+    public void getInfoLicenseUrl() {
+        Assert.assertEquals("url", springFoxProperties.getInfo().getLicense().getUrl());
+    }
+
 
 }
-
-//swagger:
-//        version: version
-//        termsOfServiceUrl: termsOfServiceUrl
-//        contact:
-//        name: name
-//        url: url
-//        email: email
-//        license:
-//        name: name
-//        url: url
