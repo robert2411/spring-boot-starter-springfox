@@ -1,0 +1,13 @@
+swagger:
+  info:
+    title: title
+    description: description
+    version: version
+    termsOfServiceUrl: termsOfServiceUrl
+    contact:
+      name: name
+      url: url
+      email: email
+    license:
+      name: name
+      url: url
