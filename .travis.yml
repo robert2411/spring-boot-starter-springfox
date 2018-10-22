@@ -10,8 +10,9 @@ install:
 
 ## Build and release to maven central
 script:
-    if: branch = master
-      - mvn clean deploy --settings .maven.xml -B -U -Prelease
+    - if [ $TRAVIS_BRANCH == 'master' ];
+      then mvn clean deploy -DskipTests=true --settings .maven.xml -B -U -Prelease;
+      fi
 
 before_deploy:
   - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
