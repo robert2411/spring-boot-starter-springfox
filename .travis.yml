@@ -10,7 +10,9 @@ install:
 
 ## Build and release to maven central
 script:
-    mvn clean deploy --settings .maven.xml -B -U -Prelease
+    - if [ $TRAVIS_BRANCH == 'master' ];
+      then mvn clean deploy -DskipTests=true --settings .maven.xml -B -U -Prelease;
+      fi
 
 before_deploy:
   - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
@@ -23,6 +25,7 @@ deploy:
     - target/spring-boot-starter-springfox-$project_version.jar
   skip_cleanup: true
   on:
+    branch: master
     repo: robert2411/spring-boot-starter-springfox
   name: $project_version
 
