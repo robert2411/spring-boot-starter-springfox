@@ -11,7 +11,7 @@ install:
 ## Build and release to maven central
 script:
     if: branch = master
-      mvn clean deploy --settings .maven.xml -B -U -Prelease
+      - mvn clean deploy --settings .maven.xml -B -U -Prelease
 
 before_deploy:
   - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
