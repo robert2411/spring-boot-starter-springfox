@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "swagger")
 public class SpringFoxProperties {
     private Info info;
+    private Config config = new Config();
 
     public Info getInfo() {
         return info;
@@ -14,13 +15,33 @@ public class SpringFoxProperties {
         this.info = info;
     }
 
+    public Config getConfig(){
+        return config;
+    }
+
+    public void setConfig(Config config) {
+        this.config = config;
+    }
+
+    public static class Config {
+        private String paths  = "";
+
+        public String getPaths() {
+            return paths;
+        }
+
+        public void setPaths(String paths) {
+            this.paths = paths;
+        }
+    }
+
     public static class Info {
-        private String title;
-        private String description;
-        private String version;
-        private String termsOfServiceUrl;
-        private Contact contact;
-        private License license;
+        private String title = "";
+        private String description = "";
+        private String version = "";
+        private String termsOfServiceUrl = "";
+        private Contact contact = new Contact();
+        private License license = new License();
 
         public String getTitle() {
             return title;
@@ -71,9 +92,9 @@ public class SpringFoxProperties {
         }
 
         public static class Contact {
-            private String name;
-            private String url;
-            private String email;
+            private String name  = "";
+            private String url  = "";
+            private String email  = "";
 
             public String getName() {
                 return name;
@@ -101,8 +122,8 @@ public class SpringFoxProperties {
         }
 
         public static class License {
-            private String name;
-            private String url;
+            private String name  = "";
+            private String url  = "";
 
             public String getName() {
                 return name;
