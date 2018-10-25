@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "swagger")
 public class SpringFoxProperties {
-    private Info info;
+    private Info info = new Info()
     private Config config = new Config();
 
     public Info getInfo() {
