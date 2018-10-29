@@ -7,9 +7,13 @@ before_install:
 
 install:
     mvn --settings .maven.xml install -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+addons:
+  sonarcloud:
+    organization: "robert2411-github" # the key of the org you chose at step #3
 
 ## Build and release to maven central
 script:
+    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
     - if [ $TRAVIS_BRANCH == 'master' ];
       then mvn clean deploy -DskipTests=true --settings .maven.xml -B -U -Prelease;
       fi
@@ -28,6 +32,9 @@ deploy:
     branch: master
     repo: robert2411/spring-boot-starter-springfox
   name: $project_version
+
+#after_success:
+#    - bash <(curl -s https://codecov.io/bash)
 
 cache:
     directories:
