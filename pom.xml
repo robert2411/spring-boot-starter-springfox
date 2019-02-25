@@ -6,7 +6,7 @@
 
     <groupId>com.github.robert2411</groupId>
     <artifactId>spring-boot-starter-springfox</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
 
     <name>SpringFox starter</name>
     <description>A springboot starter for springfox</description>
@@ -34,7 +34,7 @@
     </developers>
 
     <properties>
-        <spring-boot.version>2.0.7.RELEASE</spring-boot.version>
+        <spring-boot.version>2.0.8.RELEASE</spring-boot.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
