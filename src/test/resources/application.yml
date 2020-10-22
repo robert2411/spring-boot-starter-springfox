@@ -12,4 +12,5 @@ swagger:
       name: name
       url: url
   config:
-    paths: paths
+    paths: /api/.*
+    documentation-type: swagger
