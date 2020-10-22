@@ -24,7 +24,8 @@ public class SpringFoxProperties {
     }
 
     public static class Config {
-        private String paths  = "";
+        private String paths = "";
+        private String documentationType = "openApi";
 
         public String getPaths() {
             return paths;
@@ -32,6 +33,14 @@ public class SpringFoxProperties {
 
         public void setPaths(String paths) {
             this.paths = paths;
+        }
+
+        public String getDocumentationType() {
+            return documentationType;
+        }
+
+        public void setDocumentationType(String documentationType) {
+            this.documentationType = documentationType;
         }
     }
 
