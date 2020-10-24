@@ -6,7 +6,7 @@
 
     <groupId>com.github.robert2411</groupId>
     <artifactId>spring-boot-starter-springfox</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 
     <name>SpringFox starter</name>
     <description>A springboot starter for springfox</description>
