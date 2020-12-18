@@ -244,7 +244,7 @@
                 <repository>
                     <id>github</id>
                     <name>GitHub Packages</name>
-                    <url>https://maven.pkg.github.com/robert2411/rule-checker</url>
+                    <url>https://maven.pkg.github.com/robert2411/spring-boot-starter-springfox</url>
                 </repository>
             </distributionManagement>
         </profile>
