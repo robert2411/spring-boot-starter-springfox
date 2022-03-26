@@ -34,7 +34,7 @@
     </developers>
 
     <properties>
-        <spring-boot.version>2.4.2</spring-boot.version>
+        <spring-boot.version>2.6.5</spring-boot.version>
         <springfox.version>3.0.0</springfox.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
