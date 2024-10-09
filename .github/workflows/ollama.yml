@@ -26,7 +26,6 @@ jobs:
       - name: Install Ollama
         run: |
           curl -fsSL https://ollama.com/install.sh | bash
-          ollama pull codegemma
         shell: bash
 
       - name: Start Ollama Service
@@ -41,6 +40,10 @@ jobs:
             echo "Ollama service is not running"
             exit 1
           fi
+        shell: bash
+        
+      - name: Ollame pull
+        run: ollama pull codegemma
         shell: bash
         
       - name: Get modified files
