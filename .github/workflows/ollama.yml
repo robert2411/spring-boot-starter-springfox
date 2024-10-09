@@ -28,6 +28,20 @@ jobs:
           curl -fsSL https://ollama.com/install.sh | bash
           ollama pull codegemma
         shell: bash
+
+      - name: Start Ollama Service
+        run: |
+          nohup ollama &>/dev/null &
+          sleep 10  # Wait for the service to start
+        shell: bash
+
+      - name: Verify Ollama Service
+        run: |
+          if ! curl -s http://127.0.0.1:11434/api/status; then
+            echo "Ollama service is not running"
+            exit 1
+          fi
+        shell: bash
         
       - name: Get modified files
         id: get-modified-files
