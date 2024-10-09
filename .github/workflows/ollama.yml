@@ -1,0 +1,47 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Ollama
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  pull_request:
+    branches: [ "master" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      - name: Install Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | bash
+          ollama pull codegemma
+        shell: bash
+        
+      - name: Get modified files
+        id: get-modified-files
+        uses: tj-actions/changed-files@v43
+
+      - name: Review modified files
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          for file in ${{ steps.get-modified-files.outputs.all_changed_files }}; do
+            modified_file_review=$(curl -s http://127.0.0.1:11434/api/generate -d '{"model": "${{ inputs.llm-model }}", "prompt": "Review the following file:\n\n```\n$(cat $file)\n```", "stream": false}' | jq -r '.response')
+            file_comment="Ollama Code Review for \`$file\`:\n\n$modified_file_review"
+            echo "$file_comment" >> ollama_review.txt
+          done
+
+          gh pr comment ${{ github.event.pull_request.number }} --body "$(cat ollama_review.txt)"
+        shell: bash
