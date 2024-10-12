@@ -57,7 +57,9 @@ jobs:
           for file in ${{ steps.get-modified-files.outputs.all_changed_files }}; do
             file_content=$(cat $file)
             echo "Review $file with content \r\n $file_content"
-            modified_file_review=$(curl -s http://127.0.0.1:11434/api/generate -d '{"model": "codegemma", "prompt": "Review the following file:\n\n```\n$file_content\n```", "stream": false}' | jq -r '.response')
+            prompt="Review the following file:\n\n```\$file_content\n```"
+            echo "${prompt}"
+            modified_file_review=$(curl -s http://127.0.0.1:11434/api/generate -d '{"model": "codegemma", "prompt": "${prompt}", "stream": false}' | jq -r '.response')
             gh pr comment ${{ github.event.pull_request.number }} --body "Ollama Code Review for \`$file\`:\r\n\r\n$modified_file_review"
           done
         shell: bash
